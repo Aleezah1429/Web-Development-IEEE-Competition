@@ -27,35 +27,6 @@ body{
 }
 
 
-
-
-/* @media screen and (min-width: 400px )and (max-width: 1000px ){
-    #header {
-        position: fixed;
-        width: 250px;
-        z-index: 1;
-      
-        }
-    .search_bar_com{
-        display: flex !important;
-    }  
-    .search_bar_profile{
-        margin-left: 0% !important;
-        display: flex !important;
-        width: 40% !important;
-    }
-    .my_profile_container{
-             width:  115% !important;
-    }
-    .profile_div{
-        margin-top:10% !important ;
-    }
-    
- }  */
-
-
-
-
 @media screen and (min-width:380px) and (max-width: 580px) {
     .ModelContent{
         position: absolute;
