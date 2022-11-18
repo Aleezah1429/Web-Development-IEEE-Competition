@@ -1,265 +1,127 @@
-// HOME PAGE OF COMPUTER HI TECH
-
-
-// import logo from './logo.svg';
-import '../App.css';
-import React,{useEffect,useState} from 'react';
-import ReactDOM from 'react-dom';
-import {Button,Row} from "react-bootstrap";
-import ModalSignup from "../Components/Signup"
-import NavBar from "../Components/Navbar"
-import ControlledCarousel from "../Components/Carousel"
-import SearchBar from "../Components/SearchBar"
-import MainCard from "../Components/Card"
-import AllCards from "../Components/AllCards"
-import {
-  Link,useHistory
-} from "react-router-dom";
-import Footer from '../Components/Footer';
-import {AiOutlineArrowRight} from "react-icons/ai"
-import {motion,useAnimation} from "framer-motion"
-import InView, { useInView} from "react-intersection-observer"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import ProductCarousel from '../Components/ProductCarousel';
-// import Chat from '../Components/Chat';
-
-import ScrollAnimation from "react-animate-on-scroll";
-import "./animate.css"
-
-
-
+import NavBar from '../Components/NavBar';
+import Header from '../Components/Header';
+import JobCard from '../Components/JobCard';
+import Footer from "../Components/Footer"
+import { useEffect, useState } from "react"
+import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { propTypes } from 'react-bootstrap/esm/Image';
+import { motion } from "framer-motion";
+import {connect} from "react-redux"
+import CountUp from 'react-countup';
+// import { useInView } from "react-intersection-observer";
+// import { useAnimation } from "framer-motion"
+import { Link,useHistory } from "react-router-dom";
 
 
 function Home(props) {
-  const history = useHistory()
-  const imgArr=["https://www.memory4less.com/images/products/img0922m/HYN-D4-R-LO-N-sm.jpg",
-  "https://www.memory4less.com/images/products/img0922/SNP917VKC-128G-sm.jpg",
-  "https://www.memory4less.com/Images/products/img0922a/HCBB-75W-A-sm.jpg",
-  "https://www.memory4less.com/Images/products/img0922a/AA23080-sm.jpg",
-]
+  const history = useHistory();
+  const [allJobs, setAllJobs] = useState([])
+  const [candidates, setCandidates] = useState(0)
+  const [companies, setCompanies] = useState(0)
+  const [jobs, setJobs] = useState(0)
 
-  const [refFeatured,inViewFeatured] = useInView({threshold:0.7})
-  const [refLatest,inViewLatest] = useInView({threshold:0.7})
-  const animationFeatured = useAnimation()
-  const animationLatest = useAnimation()
-  const [productsFeature,setProductsFeature] = useState([])
-  const [productsLatest,setProductsLatest] = useState([])
+
+  useEffect(() => {
+    console.log("USER",props.userInfo,process.env.REACT_APP_BASE_URL+'/AllJobs')
+    fetch(process.env.REACT_APP_BASE_URL+'/AllJobs')
+      .then(response => response.json())
+      .then(data => setAllJobs(data));
+
+      fetch(process.env.REACT_APP_BASE_URL+'/Statistics')
+      .then(response => response.json())
+      .then(data => {
+        console.log("STATS",data)
+        setCandidates(data.candidates)
+        setJobs(data.jobs)
+        setCompanies(data.companies)
+      });
+
+
+  }, [])
+
 
 
   useEffect(()=>{
-    //FEATURE
-    fetch(process.env.REACT_APP_BASE_URL + '/ProductsAcctoCategory', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ category:"GraphicCards"})
-  })
-    .then(response => response.json())
-    .then(grahpiccarddata => {
-      console.log("SEARCH",grahpiccarddata.result)
+  },[candidates])
 
-      fetch(process.env.REACT_APP_BASE_URL + '/ProductsAcctoCategory', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ category:"Memories"})
-      })
-        .then(response => response.json())
-        .then(memorydata => {
-          console.log("SEARCH",memorydata.result)
-    
-          
-          setProductsFeature([...grahpiccarddata.result.slice(0,4),...memorydata.result.slice(0,4)])
-      });
-      
-  });
+  // const { ref, inView } = useInView();
+  // const animation = useAnimation();
 
-  //LATEST
-  fetch(process.env.REACT_APP_BASE_URL + '/ProductsAcctoCategory', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ category:"HardDrives"})
-  })
-    .then(response => response.json())
-    .then(harddrivedata => {
-      console.log("SEARCH",harddrivedata.result)
+  // useEffect(() => {
+  //   if (inView) {
+  //     animation.start({
+  //       x: 0,
+  //       transition: { type: "spring", duration: 25, bounce: 0.3 }
+  //     })
+  //     // if (!inView) {
+  //     //   animation.start({ x: "-100vw" })
+  //     // }
+  //   }
 
-      fetch(process.env.REACT_APP_BASE_URL + '/ProductsAcctoCategory', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ category:"MotherBoards"})
-      })
-        .then(response => response.json())
-        .then(motherboarddata => {
-          console.log("SEARCH",motherboarddata.result)
-    
-          
-          setProductsLatest([...harddrivedata.result.slice(0,4),...motherboarddata.result.slice(0,4)])
-      });
-      
-  });
-
-},[])
-
-  useEffect(()=>{
-    if(inViewFeatured){
-      animationFeatured.start({
-        x:0,
-        transition:{
-          type:"spring",duration:1 , bounce:0.5
-        }
-      
-       
-      })
-    }
-
-    if(inViewLatest){
-      animationLatest.start({
-        x:0,
-        transition:{
-          type:"spring",duration:1 , bounce:0.5
-        }
-      
-       
-      })
-    }
-   
-  })
+  // }, [inView])
 
   return (
-    <>
-    {/* <NavBar/> */}
-    {/* // <>
-        // <Button variant="primary" onClick={() => setModalShow(true)}>
-        //   Launch vertically centered modal
-        // </Button>
-  
-        // <ModalSignup
-        //   show={modalShow}
-        //   onHide={() => setModalShow(false)}
-        // />
-      // </> */}
-    {/* <SearchBar/> */}
-    <Row  >
-      <img  className='HomeImg'
-      src={"https://media2.giphy.com/media/3oKIPmHmREIV18Xtbq/giphy.gif"} 
-      // src={" https://media2.giphy.com/media/j0qclsfQMGBhaVvYGT/200.gif"}
-      height="500px"/>
-      <div className='HomeBanner'>
-        <h3 style={{color:"white"}}>All Computer Parts Available at Reasonable Price</h3>
-        <ScrollAnimation
-            animateIn="flipInX"
-            duration={2}
-            delay={1}
-          >
-      <Button onClick={()=>history.push("/categories")} style={{fontSize:"20px"}} variant="outline-secondary">Buy Our Products</Button>{' '}
-    </ScrollAnimation>
-      </div>
-    </Row>
-    <ControlledCarousel/>
-    <div style={{width:"100%",height:"40px",textAlign:"center",marginTop:"5%"}}>
-      <span className="heading"> Featured Products </span>
-      
-    </div>
-    <div className="Featured" ref={refFeatured} style={{textAlign:"-webkit-center",}}  >
-            <Row 
-              xs={2}
-              s={2}
-              md={4}
-              l={5}
-              className="g-3"
-              style={{
-                marginTop: "5%",
-              }}
+    <div className="Home">
+      <Header />
+      <Row style={{marginTop:"5%",marginLeft:"2%",marginBottom:"10%"}}>
+        <h1 className='home-heading' style={{marginLeft:"-1%"}}>STATISTICS</h1>
+        <Row style={{textAlign:"center"}}>
+          <Col sm={4}>
+            <h1 style={{fontFamily:"fantasy",fontSize:"60px"}}>
+            <CountUp start={0} end={candidates} duration={6} />
+              </h1>
+            <h3 style={{color:"#ff9902"}}>Candidates</h3>
+          </Col>
+         <Col sm={4}>
+            <h1 style={{fontFamily:"fantasy",fontSize:"60px"}}>
+            <CountUp start={0} end={jobs} duration={6} />
+            </h1>
+            <h3 style={{color:"#ff9902"}}>Jobs</h3>
+          </Col>
+          <Col sm={4}>
+            <h1 style={{fontFamily:"fantasy",fontSize:"60px"}}>
+            <CountUp start={0} end={companies} duration={6} />
+            </h1>
+            <h3 style={{color:"#ff9902"}}>Companies</h3>
+          </Col>
+        </Row>
+      </Row>
+      <h1 className='home-heading'>
+        RECENT JOBS
+      </h1>
+      {allJobs.map((item, index) => {
+        if (index <= 5) {
+          console.log(item)
+          return (
+            <motion.div 
+              initial={{ x: "-100vw" }}
+              animate={{x: 0}}
+              transition={{ type: "spring", duration: 4, bounce: 0.4 }}
             >
-              {productsFeature.map((e,i) => {
-                return (
-                  <motion.div 
-                    initial={{x:"-200vw"}}
-                    animate={animationFeatured}
-                  >
-                    <MainCard 
-                      src={e.image}
-                      title={e.title.slice(0,50)}
-                      price={`$${e.price}`}
-                    />
-                    </motion.div>
-                  
-                );
-              })}
-              <Row style={{justifyContent:"end",marginTop:"4%"}}>
-                     <Button style={{width:"12%"}} variant="dark" onClick={() => {history.push("/Categories")}}>See more<AiOutlineArrowRight style={{marginLeft:"10%"}}/> </Button>
-              </Row>
-            </Row>
-          </div>
-    <div  style={{width:"100%",height:"40px",textAlign:"center",marginTop:"5%"}}>
-      <span className="heading"> Latest Products </span>
-      
-    </div>
-    <div className="Latest" ref={refLatest}  style={{textAlign:"-webkit-center"}}  >
-            <Row  style={{width:"90% !important", marginTop: "5%"}}
-              xs={2}
-              s={2}
-              md={4}
-              l={5}
-              className="g-3"
-            >
-              {productsLatest.map((e,i) => {
-                return (
-                  <motion.div 
-                  initial={{x:"-200vw"}}
-                  animate={animationLatest}
-                >
-                    <MainCard
-                      src={e.image}
-                      title={e.title.slice(0,50)}
-                      price={`$${e.price}`}
-                      priceValue={e.price}
-                      fullTitle={e.title}
-                    />
-                    </motion.div>
-                  
-                );
-              })}
-               <Row style={{justifyContent:"end",marginTop:"4%"}}>                     
-               <Button style={{width:"12%"}} variant="dark" onClick={() => {history.push("/Categories")}}>See more<AiOutlineArrowRight style={{marginLeft:"10%"}}/> </Button>
+              <JobCard companyDescription={item.companyDescription} companyLogo={item.companyLogo} companyName={item.companyName}
+                companyWebsite={item.companyWebsite} jobCategory={item.jobCategory} jobDescription={item.jobDescription}
+                jobRequirements={item.jobRequirements} jobSalary={item.jobSalary.slice(0, 20)} jobVacancies={item.jobVacancies}
+                companyLocation={item.companyLocation} jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
+            </motion.div>
+          )
+        }
 
-              </Row>
-            </Row>
-          </div>
-          {/* <div style={{width:"1000px",height:"1000px"}}> */}
-          {/* <Chat/> */}
-          {/* </div> */}
-    </>
+      })}
+      <div className='see-more-div'>
+        <Button onClick={() => { history.push("/AllJobs") }} className='see-more-btn' variant="flat">
+          More Jobs
+        </Button>
+      </div>
+    </div>
+
+
   );
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+      userInfo:state.userInfo
+  }
+}
 
-
-
-
-
-
-
-
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCy8aua-aTqwXuY9_S0T11Vq8wrTmMrcYI",
-//   authDomain: "computer-hi-tech.firebaseapp.com",
-//   projectId: "computer-hi-tech",
-//   storageBucket: "computer-hi-tech.appspot.com",
-//   messagingSenderId: "315039438537",
-//   appId: "1:315039438537:web:23b2d35a4259c580f59f18",
-//   measurementId: "G-3S4KQQJREG"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
+export default connect(mapStateToProps,null)( Home);
