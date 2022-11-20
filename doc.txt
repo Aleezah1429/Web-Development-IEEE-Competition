@@ -1,3 +1,19 @@
+Theme color combination of website
+
+
+DARK THEME: 
+
+1. #BBFF38, #171717, black, white, #262626
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.regencycreative.co.uk%2Fbest-website-colour-themes-2022%2F&psig=AOvVaw1xKfOslztg8xmqVtFKGPg_&ust=1668871995555000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPD-y-SGuPsCFQAAAAAdAAAAABAE
+
+
+2. #0B0C10, #C5C6C8, #66FCF1, #46A29F
+https://visme.co/blog/wp-content/uploads/2016/09/website12.jpg
+
+
+
+
+
 FOR LOGIN SIGNUP 
 
 folder acountBox and marginer
@@ -16,3 +32,12 @@ npm i react-modal
 
 5. for icons
 npm install react-icons --save
+
+
+
+FOR HOME 
+1. install react-intersection-observer by using
+npm i react-intersection-observer
+
+2. then
+npm i react-animate-on-scroll --force
