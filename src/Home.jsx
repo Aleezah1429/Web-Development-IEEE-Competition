@@ -1,35 +1,37 @@
-// import logo from './logo.svg';
-import '../App.css';
+import './App.css';
 import React,{useEffect,useState} from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import {Button,Row} from "react-bootstrap";
-import ModalSignup from "../Components/Signup"
-import NavBar from "../Components/Navbar"
-import ControlledCarousel from "../Components/Carousel"
-import SearchBar from "../Components/SearchBar"
-import MainCard from "../Components/Card"
-import AllCards from "../Components/AllCards"
-import {
-  Link,useHistory
-} from "react-router-dom";
-import Footer from '../Components/Footer';
+// import NavBar from "../Components/Navbar"
+
+
+// import ControlledCarousel from "../Components/Carousel"
+// import MainCard from "../Components/Card"
+
+
+
+// import SearchBar from "../Components/SearchBar"
+// import AllCards from "../Components/AllCards"
+// import {
+//   Link,useHistory
+// } from "react-router-dom";
+// import Footer from '../Components/Footer';
 import {AiOutlineArrowRight} from "react-icons/ai"
 import {motion,useAnimation} from "framer-motion"
 import InView, { useInView} from "react-intersection-observer"
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import ProductCarousel from '../Components/ProductCarousel';
-// import Chat from '../Components/Chat';
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
+// import ProductCarousel from '../Components/ProductCarousel';
 
 import ScrollAnimation from "react-animate-on-scroll";
-import "./animate.css"
+// import "./animate.css"
 
 
 
 
 
 function Home(props) {
-  const history = useHistory()
+  // const history = useHistory()
   const imgArr=["https://www.memory4less.com/images/products/img0922m/HYN-D4-R-LO-N-sm.jpg",
   "https://www.memory4less.com/images/products/img0922/SNP917VKC-128G-sm.jpg",
   "https://www.memory4less.com/Images/products/img0922a/HCBB-75W-A-sm.jpg",
@@ -124,18 +126,6 @@ function Home(props) {
 
   return (
     <>
-    {/* <NavBar/> */}
-    {/* // <>
-        // <Button variant="primary" onClick={() => setModalShow(true)}>
-        //   Launch vertically centered modal
-        // </Button>
-  
-        // <ModalSignup
-        //   show={modalShow}
-        //   onHide={() => setModalShow(false)}
-        // />
-      // </> */}
-    {/* <SearchBar/> */}
     <Row  >
       <img  className='HomeImg'
       src={"https://media2.giphy.com/media/3oKIPmHmREIV18Xtbq/giphy.gif"} 
@@ -148,11 +138,11 @@ function Home(props) {
             duration={2}
             delay={1}
           >
-      <Button onClick={()=>history.push("/categories")} style={{fontSize:"20px"}} variant="outline-secondary">Buy Our Products</Button>{' '}
+      <Button style={{fontSize:"20px"}} variant="outline-secondary">Buy Our Products</Button>{' '}
     </ScrollAnimation>
       </div>
     </Row>
-    <ControlledCarousel/>
+    {/* <ControlledCarousel/> */}
     <div style={{width:"100%",height:"40px",textAlign:"center",marginTop:"5%"}}>
       <span className="heading"> Featured Products </span>
       
@@ -174,17 +164,17 @@ function Home(props) {
                     initial={{x:"-200vw"}}
                     animate={animationFeatured}
                   >
-                    <MainCard 
+                    {/* <MainCard 
                       src={e.image}
                       title={e.title.slice(0,50)}
                       price={`$${e.price}`}
-                    />
+                    /> */}
                     </motion.div>
                   
                 );
               })}
               <Row style={{justifyContent:"end",marginTop:"4%"}}>
-                     <Button style={{width:"12%"}} variant="dark" onClick={() => {history.push("/Categories")}}>See more<AiOutlineArrowRight style={{marginLeft:"10%"}}/> </Button>
+                     <Button style={{width:"12%"}} variant="dark">See more<AiOutlineArrowRight style={{marginLeft:"10%"}}/> </Button>
               </Row>
             </Row>
           </div>
@@ -206,57 +196,26 @@ function Home(props) {
                   initial={{x:"-200vw"}}
                   animate={animationLatest}
                 >
-                    <MainCard
+                    {/* <MainCard
                       src={e.image}
                       title={e.title.slice(0,50)}
                       price={`$${e.price}`}
                       priceValue={e.price}
                       fullTitle={e.title}
-                    />
+                    /> */}
                     </motion.div>
                   
                 );
               })}
                <Row style={{justifyContent:"end",marginTop:"4%"}}>                     
-               <Button style={{width:"12%"}} variant="dark" onClick={() => {history.push("/Categories")}}>See more<AiOutlineArrowRight style={{marginLeft:"10%"}}/> </Button>
+               <Button style={{width:"12%"}} variant="dark">See more<AiOutlineArrowRight style={{marginLeft:"10%"}}/> </Button>
 
               </Row>
             </Row>
           </div>
-          {/* <div style={{width:"1000px",height:"1000px"}}> */}
-          {/* <Chat/> */}
-          {/* </div> */}
     </>
   );
 }
 
 export default Home;
 
-
-
-
-
-
-
-
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// // TODO: Add SDKs for Firebase products that you want to use
-// // https://firebase.google.com/docs/web/setup#available-libraries
-
-// // Your web app's Firebase configuration
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCy8aua-aTqwXuY9_S0T11Vq8wrTmMrcYI",
-//   authDomain: "computer-hi-tech.firebaseapp.com",
-//   projectId: "computer-hi-tech",
-//   storageBucket: "computer-hi-tech.appspot.com",
-//   messagingSenderId: "315039438537",
-//   appId: "1:315039438537:web:23b2d35a4259c580f59f18",
-//   measurementId: "G-3S4KQQJREG"
-// };
-
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
