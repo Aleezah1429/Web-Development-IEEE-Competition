@@ -1,0 +1,18 @@
+FOR LOGIN SIGNUP 
+
+folder acountBox and marginer
+
+1. first install style-component by running this command
+npm install --save styled-components
+
+2. then install framer motion
+npm i framer-motion
+
+3. then bootstrap
+npm install react-bootstrap bootstrap
+
+4. and last react modal
+npm i react-modal
+
+5. for icons
+npm install react-icons --save
