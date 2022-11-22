@@ -11,6 +11,11 @@ https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.regencycreative.co.uk%2Fbe
 https://visme.co/blog/wp-content/uploads/2016/09/website12.jpg
 
 
+website template
+1. https://wonder-tech.co/
+2. https://www.hashpotato.io/
+3. https://baritechsol.com/
+4. https://amzdudes.com/port/
 
 
 
@@ -41,3 +46,9 @@ npm i react-intersection-observer
 
 2. then
 npm i react-animate-on-scroll --force
+
+
+For Footer
+npm i react-useanimations --force
+
+

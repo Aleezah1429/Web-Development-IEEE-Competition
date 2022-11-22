@@ -3,7 +3,7 @@ import './App.css';
 import styled from "styled-components";
 import { AccountBox } from "./accountBox";
 import background from "./assets/bg.jpg";
-
+import Home from './Home'
 
 const AppContainer = styled.div`
   width: 100%;
@@ -19,18 +19,19 @@ const AppContainer = styled.div`
 
 function App() {
   return (
-    <AppContainer
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        paddingBottom: "5%",
-        paddingTop: "3%",
-      }}
-    >
-      <AccountBox/>
-    </AppContainer>
+    // <AppContainer
+    //   style={{
+    //     backgroundImage: `url(${background})`,
+    //     backgroundPosition: "center",
+    //     backgroundSize: "cover",
+    //     backgroundRepeat: "no-repeat",
+    //     paddingBottom: "5%",
+    //     paddingTop: "3%",
+    //   }}
+    // >
+    //   <AccountBox/>
+    // </AppContainer>
+    <Home />
   );
 }
 
