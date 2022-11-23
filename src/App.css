@@ -42,11 +42,13 @@
 
 body {
   overflow-x: hidden !important;
+  background-color: #04091E !important;
 
 }
 
 body .heading, h1, h2{
   font-family: auto !important;
+  color: #5D20D9;
   
 }
 
@@ -386,12 +388,18 @@ body .heading, h1, h2{
 
 .navLinks{
   margin-left: 15px;
+  color: #414046;
+  font-weight: bold;
+  margin-left: 20px;
 }
 
 .navLinks:hover{
-  color: grey;
+  color: white;
   font-size: 18px;
   text-shadow: #d6d4d4;
+  font-weight: bold;
+  text-decoration: underline #5D20D9;
+  text-decoration-thickness: 3px;
 }
 
 .Carousel_Cap{
@@ -486,7 +494,7 @@ body .heading, h1, h2{
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: #04091E;
+  background-color: #18032d;
   color: white;
   padding-top: 2%;
   font-size: small;
@@ -526,4 +534,17 @@ li:hover {
   display: "flex";
   justify-content: "space-around";
   padding-left: 0
+}
+
+.btn-outline-secondary :hover{
+  /* background-color: #5D20D9; */
+  color: #5D20D9;
+}
+
+.btn-outline-secondary {
+  border-color: #5D20D9 !important;
+}
+
+.MuiBox-root{
+  text-align: center !important;
 }

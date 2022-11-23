@@ -1,37 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
-import styled from "styled-components";
-import { AccountBox } from "./accountBox";
-import background from "./assets/bg.jpg";
-import Home from './Home'
-
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
+import NavBar from "./Components/Navbar"
+import Cards from "./Components/Cards"
+import Hero from './Components/Hero';
+import Footer from './Components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 function App() {
   return (
-    // <AppContainer
-    //   style={{
-    //     backgroundImage: `url(${background})`,
-    //     backgroundPosition: "center",
-    //     backgroundSize: "cover",
-    //     backgroundRepeat: "no-repeat",
-    //     paddingBottom: "5%",
-    //     paddingTop: "3%",
-    //   }}
-    // >
-    //   <AccountBox/>
-    // </AppContainer>
-    <Home />
+    <>
+    <NavBar/>
+    <Hero/>
+    <Cards/>
+    <Footer/>
+    </>
   );
 }
 
